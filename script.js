@@ -81,3 +81,23 @@ function mulaiMasukWeb() {
     intro.classList.add('intro-hidden'); 
   }
 }
+
+// FORMAT UPDATE: BY GEMINI, HAHAHA
+// LOGIKA FITUR SEARCH BAR REAL-TIME
+const searchInput = document.getElementById('assetSearch');
+
+if (searchInput) {
+    searchInput.addEventListener('keyup', function() {
+        const filterValue = searchInput.value.toLowerCase();
+        const assetCards = document.querySelectorAll('.card-item'); 
+
+        assetCards.forEach(function(card) {
+            const assetName = card.textContent.toLowerCase();
+            if (assetName.includes(filterValue)) {
+                card.style.display = ""; 
+            } else {
+                card.style.display = "none"; 
+            }
+        });
+    });
+}
