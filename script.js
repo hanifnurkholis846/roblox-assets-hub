@@ -1,103 +1,121 @@
-// =============================================
-//   DEVELOPED BY GEMINI, HAHAHA 
-//   PROJECT: HANIF WEB - ROBLOX ASSETS HUB (JS)
-// =============================================
+// DATA ASET
+const aset = [
+    { id: 1, nama: '🏠 Rumah Minimalis', kategori: 'Model 3D', harga: 0, icon: '🏠' },
+    { id: 2, nama: '🚗 Sport Car', kategori: 'Model 3D', harga: 5000, icon: '🚗' },
+    { id: 3, nama: '🌴 Pohon Palem', kategori: 'Model 3D', harga: 0, icon: '🌴' },
+    { id: 4, nama: '⚔️ Pedang Legend', kategori: 'Mesh', harga: 3000, icon: '⚔️' },
+    { id: 5, nama: '🛡️ Perisai Emas', kategori: 'Mesh', harga: 0, icon: '🛡️' },
+    { id: 6, nama: '🎵 Lagu Epic', kategori: 'Audio', harga: 2000, icon: '🎵' },
+    { id: 7, nama: '✨ Auto-Save Script', kategori: 'Script', harga: 0, icon: '📜' },
+    { id: 8, nama: '🔧 Builder Plugin', kategori: 'Plugin', harga: 8000, icon: '🔧' },
+    { id: 9, nama: '⚡ Speed Boost Plugin', kategori: 'Plugin', harga: 0, icon: '⚡' },
+    { id: 10, nama: '🎯 Aim Assist Plugin', kategori: 'Plugin', harga: 12000, icon: '🎯' }
+];
 
-document.addEventListener("DOMContentLoaded", function() {
-  
-  // 1. Real-time Clock System
-  setInterval(function() {
-    const sekarang = new Date();
-    const jamElem = document.getElementById("jam");
-    if(jamElem) {
-      jamElem.innerHTML = "🕐 " + sekarang.toLocaleTimeString('id-ID');
+let tabAktif = 'free';
+let keywordPencarian = '';
+
+function filterAset(kategori, keyword = '') {
+    let hasil = [];
+    
+    if (kategori === 'free') {
+        hasil = aset.filter(a => a.harga === 0);
+    } else if (kategori === 'paid') {
+        hasil = aset.filter(a => a.harga > 0);
+    } else if (kategori === 'plugin') {
+        hasil = aset.filter(a => a.kategori === 'Plugin');
     }
-  }, 1000);
-
-  // 2. Dark/Light Mode Toggler
-  const modeBtn = document.getElementById("modeBtn");
-  if(modeBtn) {
-    modeBtn.onclick = function() {
-      document.body.classList.toggle("light");
-      if (document.body.classList.contains("light")) {
-        modeBtn.innerHTML = "☀️ Light Mode";
-        modeBtn.className = "btn btn-sm btn-outline-dark rounded-pill border-0";
-      } else {
-        modeBtn.innerHTML = "🌙 Dark Mode";
-        modeBtn.className = "btn btn-sm btn-outline-light rounded-pill border-0";
-      }
+    
+    if (keyword.trim() !== '') {
+        const kw = keyword.toLowerCase().trim();
+        hasil = hasil.filter(a => 
+            a.nama.toLowerCase().includes(kw) || 
+            a.kategori.toLowerCase().includes(kw)
+        );
     }
-  }
-
-  // 3. Hubungkan Klik Button dengan Fungsi Filter Tab
-  const tabGratis = document.getElementById("tabGratis");
-  const tabBerbayar = document.getElementById("tabBerbayar");
-  
-  if(tabGratis) {
-    tabGratis.onclick = function() {
-      filterTab('gratis');
-    };
-  }
-  if(tabBerbayar) {
-    tabBerbayar.onclick = function() {
-      filterTab('berbayar');
-    };
-  }
-
-  // Jalankan filter default ke 'gratis' pas awal buka web
-  filterTab('gratis');
-});
-
-// 4. Clean Filter Tab Function
-function filterTab(tab) {
-  const cards = document.querySelectorAll('.card-item');
-  const btnGratis = document.getElementById('tabGratis');
-  const btnBerbayar = document.getElementById('tabBerbayar');
-
-  if(!btnGratis || !btnBerbayar) return;
-
-  if(tab === 'gratis') {
-    btnGratis.className = "btn btn-primary btn-modern";
-    btnBerbayar.className = "btn btn-outline-secondary btn-modern";
-  } else {
-    btnGratis.className = "btn btn-outline-secondary btn-modern";
-    btnBerbayar.className = "btn btn-warning btn-modern text-dark";
-  }
-
-  cards.forEach(function(card) {
-    const cardTab = card.getAttribute('data-tab');
-    if (cardTab === tab) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
+    
+    return hasil;
 }
 
-// 5. FUNCTION INTRO SCREEN - BY GEMINI, HAHAHA
-function mulaiMasukWeb() {
-  const intro = document.getElementById('intro-screen');
-  if(intro) {
-    intro.classList.add('intro-hidden'); 
-  }
-}
-
-// FORMAT UPDATE: BY GEMINI, HAHAHA
-// LOGIKA FITUR SEARCH BAR REAL-TIME
-const searchInput = document.getElementById('assetSearch');
-
-if (searchInput) {
-    searchInput.addEventListener('keyup', function() {
-        const filterValue = searchInput.value.toLowerCase();
-        const assetCards = document.querySelectorAll('.card-item'); 
-
-        assetCards.forEach(function(card) {
-            const assetName = card.textContent.toLowerCase();
-            if (assetName.includes(filterValue)) {
-                card.style.display = ""; 
-            } else {
-                card.style.display = "none"; 
-            }
-        });
+function renderAset(kategori, containerId, keyword = '') {
+    const container = document.getElementById(containerId);
+    const filtered = filterAset(kategori, keyword);
+    
+    container.innerHTML = '';
+    
+    if (filtered.length === 0) {
+        container.innerHTML = '<p style="text-align:center;opacity:0.5;padding:40px;">😅 Tidak ada aset yang cocok!</p>';
+        return;
+    }
+    
+    filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        
+        const hargaText = item.harga === 0 
+            ? '<span class="harga gratis">💰 GRATIS</span>' 
+            : `<span class="harga berbayar">💰 Rp ${item.harga.toLocaleString()}</span>`;
+        
+        const tombol = item.harga === 0
+            ? `<button class="tombol download" onclick="downloadAset(${item.id})">⬇️ Download</button>`
+            : `<button class="tombol beli" onclick="beliAset(${item.id})">🛒 Beli</button>`;
+        
+        card.innerHTML = `
+            <div class="gambar">${item.icon}</div>
+            <h3>${item.nama}</h3>
+            <div class="kategori">${item.kategori}</div>
+            ${hargaText}
+            ${tombol}
+        `;
+        
+        container.appendChild(card);
     });
 }
+
+function updateBadges() {
+    const freeCount = aset.filter(a => a.harga === 0).length;
+    const paidCount = aset.filter(a => a.harga > 0).length;
+    const pluginCount = aset.filter(a => a.kategori === 'Plugin').length;
+    
+    document.getElementById('badge-free').textContent = freeCount;
+    document.getElementById('badge-paid').textContent = paidCount;
+    document.getElementById('badge-plugin').textContent = pluginCount;
+}
+
+function switchTab(tab) {
+    tabAktif = tab;
+    
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+    
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(`tab-${tab}`).classList.add('active');
+    
+    renderAllTabs(keywordPencarian);
+}
+
+function searchAset() {
+    const input = document.getElementById('searchInput');
+    keywordPencarian = input.value;
+    renderAllTabs(keywordPencarian);
+}
+
+function renderAllTabs(keyword = '') {
+    renderAset('free', 'daftarFree', keyword);
+    renderAset('paid', 'daftarPaid', keyword);
+    renderAset('plugin', 'daftarPlugin', keyword);
+}
+
+function downloadAset(id) {
+    const item = aset.find(a => a.id === id);
+    alert(`⬇️ Downloading "${item.nama}"...\n\n(Kalau ini asli, file akan langsung terdownload ya! 😉)`);
+}
+
+function beliAset(id) {
+    const item = aset.find(a => a.id === id);
+    alert(`🛒 Kamu mau beli "${item.nama}" seharga Rp ${item.harga.toLocaleString()}?\n\nArahkan ke WhatsApp/DM admin untuk proses pembayaran.`);
+}
+
+// INIT
+updateBadges();
+renderAllTabs('');
