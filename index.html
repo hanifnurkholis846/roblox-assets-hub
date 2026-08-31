@@ -1,133 +1,77 @@
-<!-- =============================================
-     BY GEMINI, HAHAHA
-     ============================================= -->
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HANIF WEB | Free Roblox Assets</title>
-  
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-  <!-- Hubungkan ke file CSS eksternal -->
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RobloxStore - Toko Aset Roblox</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-  <!-- INTRO OVERLAY SCREEN - BY GEMINI, HAHAHA -->
-  <div id="intro-screen">
-    <div class="intro-content">
-      <div class="intro-logo">HNF</div>
-      <h1 class="intro-title">ROBLOX ASSETS HUB</h1>
-      <p class="intro-subtitle">Welcome back, Boss. Preparing workspace...</p>
-      <button class="btn btn-primary btn-modern px-4" onclick="mulaiMasukWeb()">ENTER STUDIO</button>
-    </div>
-  </div>
 
-  <!-- Floating Widgets Top Right -->
-  <div class="top-widgets">
-    <span id="jam" class="fw-bold">🕐 00:00:00</span>
-    <button id="modeBtn" class="btn btn-sm btn-outline-light rounded-pill border-0">🌙 Dark Mode</button>
-  </div>
-
-  <div class="container" style="max-width: 800px;">
-    
-    <!-- Header Section -->
-    <header class="mb-5">
-      <div class="brand-logo mb-3">HNF</div>
-      <h1 class="fw-800 text-primary mb-2">Halo, Welcome to HANIF WEB!</h1>
-      <p class="text-secondary fs-5">Pusat Free & Premium Roblox Assets. 🔥</p>
+<!-- ===== HTML ===== -->
+<div class="container-all">
+    <header class="header">
+        <div class="container">
+            <div class="logo">🎮 RobloxStore</div>
+            <nav class="nav">
+                <a href="#">Beranda</a>
+                <a href="#">Aset</a>
+                <a href="#">Tentang</a>
+                <a href="#">Kontak</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- Discord Card Announcement -->
-    <div class="card p-4 mb-5 discord-card text-white">
-      <div class="row align-items-center g-3">
-        <div class="col-auto fs-1">💬</div>
-        <div class="col">
-          <h5 class="mb-1 fw-bold">Join our Discord Community</h5>
-          <p class="mb-0 text-secondary small">Tempat kumpul dev Roblox! Sharing script, tanya jawab, dan request assets sepuasnya.</p>
+    <section class="banner">
+        <div class="container">
+            <h1>🏪 Toko Aset Roblox</h1>
+            <p>Temukan model, texture, script, dan plugin keren buat game-mu!</p>
+            <p class="sub">✨ Ada yang gratis & berbayar ✨</p>
         </div>
-        <div class="col-md-auto text-end">
-          <a href="https://discord.gg/z5ZFTPMVM" target="_blank" class="btn btn-modern text-white" style="background-color: #5865F2;">Join Discord →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Filter System Section - BY GEMINI, HAHAHA -->
-    <section class="mb-4">
-      <h3 class="fw-bold mb-1">Katalog Assets</h3>
-      
-      <!-- KOTAK PENCARIAN KECIL & ELEGAN (DI BAWAH JUDUL KATALOG) -->
-      <div class="search-container mb-3" style="text-align: left;">
-          <input type="text" id="assetSearch" placeholder="🔍 Cari aset..." style="padding: 6px 15px; width: 100%; max-width: 280px; border-radius: 20px; border: 2px solid #00ffff; background: #111; color: #fff; font-size: 14px; outline: none; box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); transition: 0.3s;">
-      </div>
-
-      <div class="d-flex gap-2 mb-4">
-        <button id="tabGratis" class="btn btn-primary btn-modern">🎁 Versi Gratis</button>
-        <button id="tabBerbayar" class="btn btn-outline-secondary btn-modern">💎 Versi Premium</button>
-      </div>
-
-      <!-- Assets Grid -->
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        
-        <!-- Asset 1 -->
-        <div class="col card-item" data-tab="gratis">
-          <div class="card h-100 custom-card">
-            <div class="card-img-wrapper">
-              <img src="https://i.ibb.co.com/PZN1FsPZ/Untitled-design-1.png" alt="Summit Kit">
-            </div>
-            <div class="p-3 d-flex flex-column justify-content-between h-100">
-              <div>
-                <h5 class="text-white fw-bold mb-1 fs-6">Summit Kit</h5>
-                <span class="badge bg-success mb-3">Free System</span>
-              </div>
-              <a href="https://drive.google.com/uc?export=download&id=1yBE8bIA_50rliPQ_WviLEeeQTHKXuwUS" download class="btn btn-outline-primary btn-modern btn-sm w-100 mt-auto">⬇️ Download</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Asset 2 -->
-        <div class="col card-item" data-tab="gratis">
-          <div class="card h-100 custom-card">
-            <div class="card-img-wrapper">
-              <img src="https://i.ibb.co.com/Xrch9N06/Untitled-design-2.png" alt="Hangout Kit">
-            </div>
-            <div class="p-3 d-flex flex-column justify-content-between h-100">
-              <div>
-                <h5 class="text-white fw-bold mb-1 fs-6">Hangout Kit</h5>
-                <span class="badge bg-success mb-3">Free System</span>
-              </div>
-              <a href="https://drive.google.com/uc?export=download&id=1GkdDt3Ir8a0PCmLbRsZ6abRGWJnuLqRV" download class="btn btn-outline-primary btn-modern btn-sm w-100 mt-auto">⬇️ Download</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Asset 3 -->
-        <div class="col card-item" data-tab="berbayar">
-          <div class="card h-100 custom-card">
-            <div class="card-img-wrapper">
-              <img src="https://i.ibb.co.com/WNfXS2Tn/Untitled-design-3.png" alt="Admin Panel V1">
-            </div>
-            <div class="p-3 d-flex flex-column justify-content-between h-100">
-              <div>
-                <h5 class="text-white fw-bold mb-1 fs-6">Admin Panel V1</h5>
-                <span class="badge bg-warning text-dark mb-3">Rp 20.000</span>
-              </div>
-              <a href="https://discord.com/channels/1458543383785242697/1515204907748298822" target="_blank" class="btn btn-warning btn-modern btn-sm w-100 mt-auto text-dark">🛒 Beli via Discord</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </section>
 
-  </div>
+    <section class="produk">
+        <div class="container">
+            <div class="toolbar">
+                <h2>🔥 Koleksi Aset</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 Cari aset..." oninput="searchAset()">
+                </div>
+            </div>
+            
+            <div class="tab-nav">
+                <button class="tab-btn active" data-tab="free" onclick="switchTab('free')">
+                    🆓 Free <span class="badge" id="badge-free">0</span>
+                </button>
+                <button class="tab-btn" data-tab="paid" onclick="switchTab('paid')">
+                    💰 Paid <span class="badge" id="badge-paid">0</span>
+                </button>
+                <button class="tab-btn" data-tab="plugin" onclick="switchTab('plugin')">
+                    🔌 Plugin <span class="badge" id="badge-plugin">0</span>
+                </button>
+            </div>
 
-  <!-- Hubungkan ke file JS eksternal -->
-  <script src="script.js"></script>
+            <div class="tab-content">
+                <div id="tab-free" class="tab-panel active">
+                    <div class="grid" id="daftarFree"></div>
+                </div>
+                <div id="tab-paid" class="tab-panel">
+                    <div class="grid" id="daftarPaid"></div>
+                </div>
+                <div id="tab-plugin" class="tab-panel">
+                    <div class="grid" id="daftarPlugin"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 RobloxStore - Dibuat dengan ❤️</p>
+        </div>
+    </footer>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
