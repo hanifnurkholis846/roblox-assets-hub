@@ -322,3 +322,136 @@ body {
         justify-content: center;
     }
 }
+
+/* SOSIAL MEDIA BUTTONS */
+.social-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: #30363d;
+  border: 1px solid transparent;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Warna Masing-masing Platform */
+.social-btn.discord {
+  background: #5865F2;
+  border-color: #5865F2;
+}
+.social-btn.discord:hover {
+  background: #4752c4;
+  box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+}
+
+.social-btn.tiktok {
+  background: #000000;
+  border-color: #00f2ea;
+}
+.social-btn.tiktok:hover {
+  background: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(0, 242, 234, 0.3);
+}
+
+.social-btn.youtube {
+  background: #FF0000;
+  border-color: #FF0000;
+}
+.social-btn.youtube:hover {
+  background: #cc0000;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+}
+
+/* Icon SVG kecil (opsional, bisa pakai emoji juga) */
+.social-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Responsive: di HP tombolnya jadi kecil */
+@media (max-width: 768px) {
+  .social-buttons {
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+  }
+  .social-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+/* SOCIAL ICON */
+.social-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Biar icon putih */
+}
+
+/* Atau kalau icon-nya udah berwarna, pake ini aja: */
+.social-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: #30363d;
+  border: 1px solid transparent;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-btn.discord {
+  background: #5865F2;
+}
+.social-btn.discord:hover {
+  background: #4752c4;
+}
+
+.social-btn.tiktok {
+  background: #000000;
+  border-color: #00f2ea;
+}
+.social-btn.tiktok:hover {
+  background: #1a1a1a;
+}
+
+.social-btn.youtube {
+  background: #FF0000;
+}
+.social-btn.youtube:hover {
+  background: #cc0000;
+}
