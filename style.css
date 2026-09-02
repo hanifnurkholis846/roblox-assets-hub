@@ -399,14 +399,6 @@ body {
   }
 }
 
-/* SOCIAL ICON */
-.social-icon {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  filter: brightness(0) invert(1); /* Biar icon putih */
-}
-
 /* Atau kalau icon-nya udah berwarna, pake ini aja: */
 .social-icon {
   width: 20px;
