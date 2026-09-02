@@ -1,15 +1,17 @@
-// DATA ASET
+// DATA ASET (CUMA 2 ASET GRATIS YANG TAMPIL)
 const aset = [
-    { id: 1, nama: '🏠 Rumah Minimalis', kategori: 'Model 3D', harga: 0, icon: '🏠' },
-    { id: 2, nama: '🚗 Sport Car', kategori: 'Model 3D', harga: 5000, icon: '🚗' },
-    { id: 3, nama: '🌴 Pohon Palem', kategori: 'Model 3D', harga: 0, icon: '🌴' },
-    { id: 4, nama: '⚔️ Pedang Legend', kategori: 'Mesh', harga: 3000, icon: '⚔️' },
-    { id: 5, nama: '🛡️ Perisai Emas', kategori: 'Mesh', harga: 0, icon: '🛡️' },
-    { id: 6, nama: '🎵 Lagu Epic', kategori: 'Audio', harga: 2000, icon: '🎵' },
-    { id: 7, nama: '✨ Auto-Save Script', kategori: 'Script', harga: 0, icon: '📜' },
-    { id: 8, nama: '🔧 Builder Plugin', kategori: 'Plugin', harga: 8000, icon: '🔧' },
-    { id: 9, nama: '⚡ Speed Boost Plugin', kategori: 'Plugin', harga: 0, icon: '⚡' },
-    { id: 10, nama: '🎯 Aim Assist Plugin', kategori: 'Plugin', harga: 12000, icon: '🎯' }
+    // ===== ASET GRATIS (FREE) - CUMA 2 YANG PUNYA FILE ===== 
+    { id: 1, nama: '🏠 Summit Kit', kategori: 'Model 3D', harga: 0, icon: '🏠' },
+    { id: 2, nama: '🌴 Hangout Kit', kategori: 'Model 3D', harga: 0, icon: '🌴' },
+
+    // ===== SEMENTARA YANG LAIN DIKOSONGKAN DULU ===== 
+    // { id: 3, nama: '⚔️ Pedang Legend', kategori: 'Mesh', harga: 3000, icon: '⚔️' },
+    // { id: 4, nama: '🛡️ Perisai Emas', kategori: 'Mesh', harga: 0, icon: '🛡️' },
+    // { id: 5, nama: '🎵 Lagu Epic', kategori: 'Audio', harga: 2000, icon: '🎵' },
+    // { id: 6, nama: '✨ Auto-Save Script', kategori: 'Script', harga: 0, icon: '📜' },
+    // { id: 7, nama: '🔧 Builder Plugin', kategori: 'Plugin', harga: 8000, icon: '🔧' },
+    // { id: 8, nama: '⚡ Speed Boost Plugin', kategori: 'Plugin', harga: 0, icon: '⚡' },
+    // { id: 9, nama: '🎯 Aim Assist Plugin', kategori: 'Plugin', harga: 12000, icon: '🎯' }
 ];
 
 let tabAktif = 'free';
@@ -106,9 +108,25 @@ function renderAllTabs(keyword = '') {
     renderAset('plugin', 'daftarPlugin', keyword);
 }
 
+// ===== FUNGSI DOWNLOAD (PAKAI LINK GOOGLE DRIVE) =====
 function downloadAset(id) {
+    const linkDownload = {
+        1: 'https://drive.google.com/uc?export=download&id=1yBE8bIA_50rliPQ_WviLEeeQTHKXuwUS', // Summit Kit
+        2: 'https://drive.google.com/uc?export=download&id=1GkdDt3Ir8a0PCmLbRsZ6abRGWJnuLqRV'  // Hangout Kit
+    };
+
     const item = aset.find(a => a.id === id);
-    alert(`⬇️ Downloading "${item.nama}"...\n\n(Kalau ini asli, file akan langsung terdownload ya! 😉)`);
+    if (!item) {
+        alert('Aset tidak ditemukan!');
+        return;
+    }
+
+    const url = linkDownload[id];
+    if (url) {
+        window.open(url, '_blank');
+    } else {
+        alert(`Link download untuk "${item.nama}" belum tersedia.`);
+    }
 }
 
 function beliAset(id) {
@@ -116,6 +134,6 @@ function beliAset(id) {
     alert(`🛒 Kamu mau beli "${item.nama}" seharga Rp ${item.harga.toLocaleString()}?\n\nArahkan ke WhatsApp/DM admin untuk proses pembayaran.`);
 }
 
-// INIT
+// ===== INITIALISASI =====
 updateBadges();
 renderAllTabs('');
