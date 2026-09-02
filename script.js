@@ -1,22 +1,13 @@
-// DATA ASET (CUMA 2 ASET GRATIS YANG TAMPIL)
+// ===== DATA ASET (CUMA 2 ASET GRATIS) =====
 const aset = [
-    // ===== ASET GRATIS (FREE) - CUMA 2 YANG PUNYA FILE ===== 
-    { id: 1, nama: '🏠 Summit Kit', kategori: 'Model 3D', harga: 0, icon: '🏠' },
-    { id: 2, nama: '🌴 Hangout Kit', kategori: 'Model 3D', harga: 0, icon: '🌴' },
-
-    // ===== SEMENTARA YANG LAIN DIKOSONGKAN DULU ===== 
-    // { id: 3, nama: '⚔️ Pedang Legend', kategori: 'Mesh', harga: 3000, icon: '⚔️' },
-    // { id: 4, nama: '🛡️ Perisai Emas', kategori: 'Mesh', harga: 0, icon: '🛡️' },
-    // { id: 5, nama: '🎵 Lagu Epic', kategori: 'Audio', harga: 2000, icon: '🎵' },
-    // { id: 6, nama: '✨ Auto-Save Script', kategori: 'Script', harga: 0, icon: '📜' },
-    // { id: 7, nama: '🔧 Builder Plugin', kategori: 'Plugin', harga: 8000, icon: '🔧' },
-    // { id: 8, nama: '⚡ Speed Boost Plugin', kategori: 'Plugin', harga: 0, icon: '⚡' },
-    // { id: 9, nama: '🎯 Aim Assist Plugin', kategori: 'Plugin', harga: 12000, icon: '🎯' }
+    { id: 1, nama: 'Summit Kit', kategori: 'Model 3D', harga: 0, gambar: 'summit-kit.png' },
+    { id: 2, nama: 'Hangout Kit', kategori: 'Model 3D', harga: 0, gambar: 'hangout-kit.png' }
 ];
 
 let tabAktif = 'free';
 let keywordPencarian = '';
 
+// ===== FUNGSI FILTER =====
 function filterAset(kategori, keyword = '') {
     let hasil = [];
     
@@ -39,6 +30,7 @@ function filterAset(kategori, keyword = '') {
     return hasil;
 }
 
+// ===== FUNGSI RENDER =====
 function renderAset(kategori, containerId, keyword = '') {
     const container = document.getElementById(containerId);
     const filtered = filterAset(kategori, keyword);
@@ -62,8 +54,13 @@ function renderAset(kategori, containerId, keyword = '') {
             ? `<button class="tombol download" onclick="downloadAset(${item.id})">⬇️ Download</button>`
             : `<button class="tombol beli" onclick="beliAset(${item.id})">🛒 Beli</button>`;
         
+        // Cek apakah pakai gambar atau emoji
+        const gambarHtml = item.gambar 
+            ? `<img src="${item.gambar}" alt="${item.nama}">` 
+            : `<span>${item.icon || '📦'}</span>`;
+        
         card.innerHTML = `
-            <div class="gambar">${item.icon}</div>
+            <div class="gambar">${gambarHtml}</div>
             <h3>${item.nama}</h3>
             <div class="kategori">${item.kategori}</div>
             ${hargaText}
@@ -74,6 +71,7 @@ function renderAset(kategori, containerId, keyword = '') {
     });
 }
 
+// ===== FUNGSI BADGE =====
 function updateBadges() {
     const freeCount = aset.filter(a => a.harga === 0).length;
     const paidCount = aset.filter(a => a.harga > 0).length;
@@ -84,6 +82,7 @@ function updateBadges() {
     document.getElementById('badge-plugin').textContent = pluginCount;
 }
 
+// ===== FUNGSI TAB =====
 function switchTab(tab) {
     tabAktif = tab;
     
@@ -96,6 +95,7 @@ function switchTab(tab) {
     renderAllTabs(keywordPencarian);
 }
 
+// ===== FUNGSI SEARCH =====
 function searchAset() {
     const input = document.getElementById('searchInput');
     keywordPencarian = input.value;
@@ -108,11 +108,11 @@ function renderAllTabs(keyword = '') {
     renderAset('plugin', 'daftarPlugin', keyword);
 }
 
-// ===== FUNGSI DOWNLOAD (PAKAI LINK GOOGLE DRIVE) =====
+// ===== FUNGSI DOWNLOAD =====
 function downloadAset(id) {
     const linkDownload = {
-        1: 'https://drive.google.com/uc?export=download&id=1yBE8bIA_50rliPQ_WviLEeeQTHKXuwUS', // Summit Kit
-        2: 'https://drive.google.com/uc?export=download&id=1GkdDt3Ir8a0PCmLbRsZ6abRGWJnuLqRV'  // Hangout Kit
+        1: 'https://drive.google.com/uc?export=download&id=1yBE8bIA_50rliPQ_WviLEeeQTHKXuwUS',
+        2: 'https://drive.google.com/uc?export=download&id=1GkdDt3Ir8a0PCmLbRsZ6abRGWJnuLqRV'
     };
 
     const item = aset.find(a => a.id === id);
@@ -129,6 +129,7 @@ function downloadAset(id) {
     }
 }
 
+// ===== FUNGSI BELI =====
 function beliAset(id) {
     const item = aset.find(a => a.id === id);
     alert(`🛒 Kamu mau beli "${item.nama}" seharga Rp ${item.harga.toLocaleString()}?\n\nArahkan ke WhatsApp/DM admin untuk proses pembayaran.`);
