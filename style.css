@@ -1,3 +1,4 @@
+/* RESET & BASE */
 * {
     margin: 0;
     padding: 0;
@@ -17,6 +18,7 @@ body {
     padding: 0 20px;
 }
 
+/* HEADER */
 .header {
     background: #161b22;
     padding: 15px 0;
@@ -31,6 +33,7 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 .logo {
@@ -50,6 +53,58 @@ body {
     color: #58a6ff;
 }
 
+/* SOSIAL MEDIA BUTTONS */
+.social-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-btn.discord {
+    background: #5865F2;
+    border-color: #5865F2;
+}
+.social-btn.discord:hover {
+    background: #4752c4;
+}
+
+.social-btn.tiktok {
+    background: #000000;
+    border-color: #00f2ea;
+}
+.social-btn.tiktok:hover {
+    background: #1a1a1a;
+}
+
+.social-btn.youtube {
+    background: #FF0000;
+    border-color: #FF0000;
+}
+.social-btn.youtube:hover {
+    background: #cc0000;
+}
+
+/* BANNER */
 .banner {
     background: linear-gradient(135deg, #0d1117, #161b22);
     padding: 60px 0;
@@ -73,10 +128,12 @@ body {
     margin-top: 5px;
 }
 
+/* PRODUK */
 .produk {
     padding: 40px 0;
 }
 
+/* TOOLBAR (Judul + Search) */
 .toolbar {
     display: flex;
     justify-content: space-between;
@@ -120,6 +177,7 @@ body {
     color: #8b949e;
 }
 
+/* TAB NAVIGASI */
 .tab-nav {
     display: flex;
     gap: 10px;
@@ -170,6 +228,7 @@ body {
     color: #58a6ff;
 }
 
+/* TAB PANEL */
 .tab-panel {
     display: none;
 }
@@ -178,6 +237,7 @@ body {
     display: block;
 }
 
+/* GRID & CARD */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -198,6 +258,7 @@ body {
     box-shadow: 0 8px 25px rgba(88, 166, 255, 0.15);
 }
 
+/* GAMBAR (Support Emoji & Gambar) */
 .card .gambar {
     width: 100%;
     height: 150px;
@@ -208,6 +269,20 @@ body {
     justify-content: center;
     font-size: 48px;
     margin-bottom: 15px;
+    overflow: hidden;
+}
+
+/* Kalau pakai gambar */
+.card .gambar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Kalau pakai emoji */
+.card .gambar span {
+    font-size: 48px;
 }
 
 .card h3 {
@@ -269,6 +344,7 @@ body {
     background: #e3b341;
 }
 
+/* FOOTER */
 .footer {
     background: #161b22;
     padding: 30px 0;
@@ -282,30 +358,41 @@ body {
     font-size: 14px;
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .header .container {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .nav a {
         margin: 0 10px;
         font-size: 14px;
     }
-    
+
+    .social-buttons {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .social-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
     .banner h1 {
         font-size: 28px;
     }
-    
+
     .toolbar {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .search-box {
         max-width: 100%;
     }
-    
+
     .grid {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
@@ -321,129 +408,4 @@ body {
         padding: 8px 15px;
         justify-content: center;
     }
-}
-
-/* SOSIAL MEDIA BUTTONS */
-.social-buttons {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  background: #30363d;
-  border: 1px solid transparent;
-}
-
-.social-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Warna Masing-masing Platform */
-.social-btn.discord {
-  background: #5865F2;
-  border-color: #5865F2;
-}
-.social-btn.discord:hover {
-  background: #4752c4;
-  box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
-}
-
-.social-btn.tiktok {
-  background: #000000;
-  border-color: #00f2ea;
-}
-.social-btn.tiktok:hover {
-  background: #1a1a1a;
-  box-shadow: 0 4px 15px rgba(0, 242, 234, 0.3);
-}
-
-.social-btn.youtube {
-  background: #FF0000;
-  border-color: #FF0000;
-}
-.social-btn.youtube:hover {
-  background: #cc0000;
-  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
-}
-
-/* Icon SVG kecil (opsional, bisa pakai emoji juga) */
-.social-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-/* Responsive: di HP tombolnya jadi kecil */
-@media (max-width: 768px) {
-  .social-buttons {
-    justify-content: center;
-    margin-top: 10px;
-    width: 100%;
-  }
-  .social-btn {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-}
-
-/* Atau kalau icon-nya udah berwarna, pake ini aja: */
-.social-icon {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-}
-
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  background: #30363d;
-  border: 1px solid transparent;
-}
-
-.social-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.social-btn.discord {
-  background: #5865F2;
-}
-.social-btn.discord:hover {
-  background: #4752c4;
-}
-
-.social-btn.tiktok {
-  background: #000000;
-  border-color: #00f2ea;
-}
-.social-btn.tiktok:hover {
-  background: #1a1a1a;
-}
-
-.social-btn.youtube {
-  background: #FF0000;
-}
-.social-btn.youtube:hover {
-  background: #cc0000;
 }
